@@ -1,0 +1,25 @@
+@import "../../styles/variables";
+
+.carouselItem {
+  align-items: flex-start;
+  gap: 0.75rem;
+  img {
+    width: 210px;
+  }
+  p:nth-child(3) {
+    font-size: $sub-normal-font;
+    color: $dark-grey;
+  }
+  p:nth-child(4) {
+    font-weight: 500;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .carouselItem {
+    flex: 1;
+    img {
+      width: 100%;
+    }
+  }
+}

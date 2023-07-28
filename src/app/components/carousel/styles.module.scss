@@ -1,0 +1,51 @@
+@import "../../styles/variables";
+
+.carouselContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  h2 {
+    font-size: $sub-medium-font;
+  }
+}
+
+.carousel {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  & > a {
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+
+.carouselContent {
+  width: fit-content;
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  position: absolute;
+  bottom: 0;
+}
+
+.carouselController {
+  display: flex;
+  gap: 1rem;
+}
+
+@media screen and (min-width: 1024px) {
+  .carousel > a {
+    display: none;
+  }
+  .carouselContent {
+    width: 100%;
+    position: static;
+  }
+  .carouselController {
+    display: none;
+  }
+}
