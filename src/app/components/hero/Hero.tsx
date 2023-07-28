@@ -1,9 +1,25 @@
 "use client";
 
 import styles from "./styles.module.scss";
+import { useEffect, useState } from "react";
 
 const Hero = () => {
-  const device = window.innerWidth < 1024 ? "/mobile" : "/desktop";
+  const [device, setDevice] = useState("/mobile");
+  useEffect(() => {
+    const checkDevice = () => {
+      if (window.innerWidth > 768) {
+        setDevice("/desktop");
+      } else {
+        setDevice("/mobile");
+      }
+    };
+
+    checkDevice();
+    window.addEventListener("resize", () => {
+      checkDevice();
+    });
+  }, []);
+
   return (
     <div className={`${styles.hero} flex-center-column`}>
       <img src={`${device}/hero.png`} />

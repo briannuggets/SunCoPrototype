@@ -1,0 +1,58 @@
+@import "../../styles/variables";
+
+.footer {
+  height: 8rem;
+  background-color: $black;
+  display: flex;
+  flex-direction: column;
+  padding: $mobile-padding;
+  margin-top: 4rem;
+  & > div,
+  p {
+    flex: 1;
+  }
+  p {
+    width: 50%;
+    font-family: $secondary-font;
+    font-size: $small-font;
+    color: $footer-text;
+    display: flex;
+    align-items: center;
+  }
+}
+
+.socialLinks {
+  display: flex;
+  gap: 1rem;
+  a {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .socialLinks a {
+    transform: scale(1.2);
+  }
+  .footer {
+    padding: 1rem $tablet-padding;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .footer {
+    height: 4.5rem;
+    position: relative;
+    padding: 0 $desktop-padding;
+    p {
+      width: fit-content;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+}

@@ -9,9 +9,14 @@
   padding: 0;
 }
 
+html {
+  overflow-x: hidden;
+}
+
 body {
   font-family: $primary-font;
   padding-top: $nav-height;
+  overflow-x: hidden;
 }
 
 nav {
@@ -23,6 +28,7 @@ nav {
   padding: 0 $mobile-padding;
   border-bottom: 2px solid $line-light-grey;
   color: $black;
+  background-color: $white;
 }
 
 a,
@@ -82,11 +88,24 @@ button {
 }
 
 .page {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
   padding: 1rem $mobile-padding;
 }
 
 .hidden {
   display: none;
+}
+
+.logo {
+  font-family: $secondary-font;
+  font-weight: 600;
+  gap: 0.75rem;
+}
+
+.logo.invert {
+  color: $white;
 }
 
 .black-button {
@@ -98,6 +117,17 @@ button {
   font-family: $secondary-font;
   font-weight: 700;
   font-size: $normal-font;
+}
+
+.chevron-button {
+  width: 2.5rem;
+  height: 2.5rem;
+  border: none;
+  box-shadow: 8px 8px 16px darken($white, 10%), -8px -8px 16px $white;
+  border-radius: 50%;
+  background-color: $white;
+  display: grid;
+  place-items: center;
 }
 
 // -------------------------------------------- //
