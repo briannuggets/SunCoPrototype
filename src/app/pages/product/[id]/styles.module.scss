@@ -1,0 +1,19 @@
+@import "../../../styles/variables.scss";
+
+.productInteractable {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+@media screen and (min-width: 768px) {
+  .productInteractable {
+    flex-direction: row;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .productInteractable {
+    max-height: 350px;
+  }
+}

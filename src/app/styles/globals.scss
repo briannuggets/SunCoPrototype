@@ -17,6 +17,9 @@ body {
   font-family: $primary-font;
   padding-top: $nav-height;
   overflow-x: hidden;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 nav {
@@ -38,6 +41,17 @@ button {
   &:hover {
     cursor: pointer;
   }
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+  appearance: textfield;
 }
 
 // -------------------------------------------- //
@@ -92,6 +106,7 @@ button {
   flex-direction: column;
   gap: 3rem;
   padding: 1rem $mobile-padding;
+  margin-bottom: 4rem;
 }
 
 .hidden {
@@ -128,6 +143,23 @@ button {
   background-color: $white;
   display: grid;
   place-items: center;
+}
+
+.progress-indicator {
+  list-style: none;
+  gap: 0.5rem;
+  li {
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 50%;
+    background-color: $black;
+    opacity: 0.2;
+    transition: 0.4s;
+  }
+  .current {
+    opacity: 1;
+    transform: scale(1.25);
+  }
 }
 
 // -------------------------------------------- //
