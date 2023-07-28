@@ -1,0 +1,57 @@
+@import "../../styles/variables";
+
+.hero {
+  background-color: $hero-bg;
+  border-radius: 1rem;
+  padding: 2rem;
+}
+
+.heroContent {
+  margin-top: 1.5rem;
+  gap: 1.5rem;
+  text-align: center;
+  h2 {
+    font-size: $medium-font;
+    font-weight: 700;
+    color: $orange;
+  }
+  h1 {
+    font-size: $large-font;
+    font-weight: 700;
+    line-height: calc($large-font * 0.8);
+  }
+  h3 {
+    font-size: $sub-normal-font;
+    font-weight: 400;
+    color: $dark-grey;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .hero img {
+    width: 50%;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .hero {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    gap: 4rem;
+    padding: 4rem;
+    img {
+      height: 10%;
+      object-fit: cover;
+      object-position: center;
+    }
+  }
+  .heroContent,
+  .hero img {
+    width: 50%;
+  }
+  .heroContent {
+    text-align: left;
+    align-items: flex-start;
+  }
+}

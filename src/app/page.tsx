@@ -1,9 +1,10 @@
 import styles from "./styles.module.scss";
+import Hero from "./components/hero/Hero";
 
 export default function Home() {
   return (
-    <>
-      <h1 className={styles.red}>Soon to be an awesome project</h1>
-    </>
+    <div className="page">
+      <Hero />
+    </div>
   );
 }
