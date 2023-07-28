@@ -1,7 +1,6 @@
 import styles from "./styles.module.scss";
 import Hero from "./components/hero/Hero";
 import Carousel from "./components/carousel/Carousel";
-import Footer from "./components/footer/Footer";
 
 const getProducts = async () => {
   "use server";
@@ -14,13 +13,10 @@ const getProducts = async () => {
 const Home = async () => {
   const products = await getProducts();
   return (
-    <>
-      <div className="page">
-        <Hero />
-        <Carousel products={products} />
-      </div>
-      <Footer />
-    </>
+    <div className="page">
+      <Hero />
+      <Carousel products={products} />
+    </div>
   );
 };
 
