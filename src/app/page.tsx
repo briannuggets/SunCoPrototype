@@ -1,4 +1,3 @@
-import styles from "./styles.module.scss";
 import Hero from "./components/hero/Hero";
 import Carousel from "./components/carousel/Carousel";
 

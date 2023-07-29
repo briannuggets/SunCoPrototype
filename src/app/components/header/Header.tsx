@@ -25,6 +25,7 @@ const Header = () => {
   };
 
   // Update cart quantity each time localStorage is updated
+  // https://stackoverflow.com/questions/26974084/listen-for-changes-with-localstorage-on-the-same-window
   useEffect(() => {
     const originalSetItem = localStorage.setItem;
 
