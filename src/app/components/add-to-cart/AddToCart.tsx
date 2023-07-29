@@ -18,7 +18,7 @@ const AddToCart = ({ id, brand, name, price }: AddToCartProps) => {
       const modifier = increment ? 1 : -1;
       const current = parseInt(quantityRef.current.value);
 
-      if (current + modifier < 0) {
+      if (current + modifier < 1) {
         return;
       }
       quantityRef.current.value = (
@@ -42,7 +42,6 @@ const AddToCart = ({ id, brand, name, price }: AddToCartProps) => {
     }
 
     localStorage.setItem("cart", JSON.stringify(cartObj));
-    console.log("Added to cart!");
   };
 
   return (
@@ -55,7 +54,7 @@ const AddToCart = ({ id, brand, name, price }: AddToCartProps) => {
       <div className={styles.addPanel}>
         <p>Quantity</p>
         <form onSubmit={handleSubmit}>
-          <div className={`${styles.quantityController} flex-center`}>
+          <div className={"quantity-controller flex-center"}>
             <button
               type="button"
               className="flex-center"

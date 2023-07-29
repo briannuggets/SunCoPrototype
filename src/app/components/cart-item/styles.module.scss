@@ -1,0 +1,50 @@
+@import "../../styles/variables";
+
+.cartItem {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem 0rem;
+  border-bottom: 1px solid $line-light-grey;
+  & > a {
+    width: 140px;
+    height: 140px;
+    border-radius: 1rem;
+    overflow: hidden;
+  }
+}
+
+.cartItemDetails {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  & > button {
+    background-color: transparent;
+    width: fit-content;
+    border: none;
+    text-decoration: underline;
+    font-family: $secondary-font;
+    font-weight: 700;
+    font-size: $sub-normal-font;
+    color: $dark-grey;
+  }
+  p:nth-child(1) {
+    font-weight: 700;
+  }
+  p:nth-child(2) {
+    font-size: $sub-normal-font;
+    font-weight: 500;
+  }
+  & > p:nth-child(2) {
+    color: $dark-grey;
+    font-family: $secondary-font;
+    font-weight: 400;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .cartItem > a {
+    width: 160px;
+    height: 160px;
+  }
+}

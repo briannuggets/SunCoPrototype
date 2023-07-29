@@ -38,26 +38,6 @@
   }
 }
 
-.quantityController {
-  border: 1px solid $line-light-grey;
-  width: fit-content;
-  height: 2.5rem;
-  padding: 0.25rem 0.5rem;
-  border-radius: 0.5rem;
-  margin: 1rem 0;
-  button,
-  input {
-    border: none;
-    background-color: transparent;
-  }
-  input {
-    font-size: $sub-normal-font;
-    font-weight: 700;
-    width: 3rem;
-    text-align: center;
-  }
-}
-
 @media screen and (min-width: 768px) {
   .addToCart {
     flex: 1;

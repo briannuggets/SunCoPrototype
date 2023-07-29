@@ -1,16 +1,134 @@
 "use client";
 
+import styles from "./styles.module.scss";
 import Product from "@/app/types/product";
+import { useEffect, useState, useRef } from "react";
+import Link from "next/link";
 
 interface CartItemProps {
   product: Product;
   quantity: number;
+  subtotal: number;
+  setSubTotal: React.Dispatch<React.SetStateAction<number>>;
 }
 
-const CartItem = ({ product, quantity }: CartItemProps) => {
+const CartItem = ({
+  product,
+  quantity,
+  subtotal,
+  setSubTotal,
+}: CartItemProps) => {
+  const [device, setDevice] = useState("/mobile");
+  useEffect(() => {
+    const checkDevice = () => {
+      if (window.innerWidth > 768) {
+        setDevice("/desktop");
+      } else {
+        setDevice("/mobile");
+      }
+    };
+
+    checkDevice();
+    window.addEventListener("resize", () => {
+      checkDevice();
+    });
+  }, []);
+
+  const quantityRef = useRef<HTMLInputElement>(null);
+  const handleQuantity = (increment: boolean) => {
+    if (quantityRef.current) {
+      const modifier = increment ? 1 : -1;
+      const current = parseInt(quantityRef.current.value);
+
+      if (current + modifier < 1) {
+        return;
+      }
+      const newValue = current + modifier;
+      quantityRef.current.value = newValue.toString();
+
+      const cartObj = JSON.parse(localStorage.getItem("cart") || "{}");
+      cartObj[product.id] = newValue;
+      localStorage.setItem("cart", JSON.stringify(cartObj));
+      setSubTotal(subtotal + product.price * modifier);
+    }
+  };
+
+  const checkInput = () => {
+    if (quantityRef.current === null) return;
+
+    const value = parseInt(quantityRef.current.value);
+    const cartObj = JSON.parse(localStorage.getItem("cart") || "{}");
+    const difference = value - cartObj[product.id];
+    if (value === 0) {
+      const cartItem = quantityRef.current.closest(".cart-item");
+      if (cartItem) {
+        cartItem.remove();
+      }
+      delete cartObj[product.id];
+      localStorage.setItem("cart", JSON.stringify(cartObj));
+    } else {
+      cartObj[product.id] = value;
+      localStorage.setItem("cart", JSON.stringify(cartObj));
+    }
+    setSubTotal(subtotal + product.price * difference);
+  };
+
+  const deleteItem = (e: React.MouseEvent<HTMLButtonElement>) => {
+    const cartObj = JSON.parse(localStorage.getItem("cart") || "{}");
+    const quantity = cartObj[product.id];
+    const cartItem = e.currentTarget.closest(".cart-item");
+    if (cartItem) {
+      cartItem.remove();
+    }
+    delete cartObj[product.id];
+    localStorage.setItem("cart", JSON.stringify(cartObj));
+    setSubTotal(subtotal - product.price * quantity);
+  };
+
   return (
-    <div>
-      <p>{`${product.brand}, ${product.name} (${product.id}): ${quantity}`}</p>
+    <div className={`${styles.cartItem} cart-item`}>
+      <Link href={`product/${product.id}`}>
+        <img
+          className="image-format"
+          src={`${device}/products/square/${product.id}.png`}
+          alt={`${product.name} shoes`}
+        />
+      </Link>
+      <div className={styles.cartItemDetails}>
+        <div className="flex-center-split">
+          <p>{product.brand}</p>
+          <p>{`$${product.price}`}</p>
+        </div>
+        <p>{product.name}</p>
+        <div className={"quantity-controller flex-center"}>
+          <button
+            type="button"
+            className="flex-center"
+            onClick={() => {
+              handleQuantity(false);
+            }}
+          >
+            <img src="/icons/misc/minus.svg" />
+          </button>
+          <input
+            type="number"
+            defaultValue={quantity}
+            ref={quantityRef}
+            min={1}
+            onBlur={checkInput}
+          />
+          <button
+            type="button"
+            className="flex-center"
+            onClick={() => {
+              handleQuantity(true);
+            }}
+          >
+            <img src="/icons/misc/plus.svg" />
+          </button>
+        </div>
+        <button onClick={deleteItem}>Remove</button>
+      </div>
     </div>
   );
 };

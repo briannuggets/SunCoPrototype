@@ -12,7 +12,7 @@ const getProducts = async () => {
 const Cart = async () => {
   const products = await getProducts();
   return (
-    <div className="page">
+    <div className={`${styles.cart} page`}>
       <CartClient products={products} />
     </div>
   );

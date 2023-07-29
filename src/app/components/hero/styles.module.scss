@@ -13,7 +13,6 @@
   h2 {
     font-size: $medium-font;
     font-weight: 700;
-    color: $orange;
   }
   h1 {
     font-size: $large-font;
@@ -28,7 +27,7 @@
 }
 
 @media screen and (min-width: 768px) {
-  .hero img {
+  .hero > img {
     width: 50%;
   }
 }
@@ -40,14 +39,13 @@
     align-items: center;
     gap: 4rem;
     padding: 4rem;
-    img {
+    & > img {
       height: 10%;
       object-fit: cover;
       object-position: center;
     }
   }
-  .heroContent,
-  .hero img {
+  .heroContent {
     width: 50%;
   }
   .heroContent {

@@ -1,0 +1,10 @@
+.cart {
+  display: block;
+}
+
+@media screen and (min-width: 1024px) {
+  .cart {
+    display: flex;
+    flex-direction: row-reverse;
+  }
+}
