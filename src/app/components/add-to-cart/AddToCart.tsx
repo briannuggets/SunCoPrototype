@@ -4,12 +4,13 @@ import styles from "./styles.module.scss";
 import { useRef } from "react";
 
 interface AddToCartProps {
+  id: string;
   brand: string;
   name: string;
   price: string;
 }
 
-const AddToCart = ({ brand, name, price }: AddToCartProps) => {
+const AddToCart = ({ id, brand, name, price }: AddToCartProps) => {
   const quantityRef = useRef<HTMLInputElement>(null);
 
   const handleQuantity = (increment: boolean) => {
@@ -28,6 +29,20 @@ const AddToCart = ({ brand, name, price }: AddToCartProps) => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (quantityRef.current === null) return;
+
+    const quantity = parseInt(quantityRef.current.value);
+    const cart = localStorage.getItem("cart") || "{}";
+    const cartObj = JSON.parse(cart);
+
+    if (cartObj[id]) {
+      cartObj[id] += quantity;
+    } else {
+      cartObj[id] = quantity;
+    }
+
+    localStorage.setItem("cart", JSON.stringify(cartObj));
+    console.log("Added to cart!");
   };
 
   return (
@@ -50,7 +65,7 @@ const AddToCart = ({ brand, name, price }: AddToCartProps) => {
             >
               <img src="/icons/misc/minus.svg" />
             </button>
-            <input type="number" defaultValue="1" ref={quantityRef} />
+            <input type="number" defaultValue="1" ref={quantityRef} min={1} />
             <button
               type="button"
               className="flex-center"
