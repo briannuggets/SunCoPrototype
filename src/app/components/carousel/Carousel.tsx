@@ -84,18 +84,20 @@ const Carousel = ({ products }: CarouselProps) => {
     }
 
     const direction = left ? 0.5 : -0.5;
-    let previousX =
-      parseFloat(carouselContent.current.dataset.previous || "0") + direction;
-    previousX = Math.min(Math.max(previousX, -1), 0);
+    const previousX = parseFloat(
+      carouselContent.current.dataset.previous || "0"
+    );
+    const newX = Math.min(Math.max(previousX + direction, -1), 0);
+    console.log(previousX, newX);
 
     carouselContent.current.animate(
       {
-        left: `${previousX * -100}%`,
-        transform: `translateX(${previousX * 100}%)`,
+        left: `${newX * -100}%`,
+        transform: `translateX(${newX * 100}%)`,
       },
       { duration: animationDuration, fill: "forwards", easing: "ease-out" }
     );
-    carouselContent.current.dataset.previous = previousX.toString();
+    carouselContent.current.dataset.previous = newX.toString();
   };
 
   return (
