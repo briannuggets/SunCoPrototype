@@ -53,10 +53,13 @@ const CartClient = ({ products }: CartClientProps) => {
                 : "$0.00"}
             </p>
           </div>
-          <button className="black-button">
+          <a
+            className="black-button"
+            href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+          >
             Checkout&nbsp;
             <img src="/icons/misc/arrow-right.svg" alt="Right arrow" />
-          </button>
+          </a>
         </div>
       </div>
       <div className={`${styles.cartItems}`}>
