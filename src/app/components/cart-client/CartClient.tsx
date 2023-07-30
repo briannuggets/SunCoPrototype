@@ -10,11 +10,13 @@ interface CartClientProps {
 }
 
 const CartClient = ({ products }: CartClientProps) => {
+  // Retrieve cart from local storage
   const [cart, setCart] = useState<Record<string, string>>({});
   useEffect(() => {
     setCart(JSON.parse(localStorage.getItem("cart") || "{}"));
   }, [setCart]);
 
+  // Calculate subtotal from cart
   const [subtotal, setSubTotal] = useState(0);
   useEffect(() => {
     let total = 0;
@@ -22,7 +24,7 @@ const CartClient = ({ products }: CartClientProps) => {
       total += parseInt(cart[item]) * products[parseInt(item)].price;
     });
     setSubTotal(total);
-  }, [cart]);
+  }, [cart, products]);
 
   return (
     <>
@@ -39,7 +41,7 @@ const CartClient = ({ products }: CartClientProps) => {
             <p>{`$${subtotal.toFixed(2)}`}</p>
             <p>{`$${subtotal > 0 ? "20.00" : "0.00"}`}</p>
             <p>{`$${(subtotal * 0.06).toFixed(2)}`}</p>
-            <p className="highlight">{`$${subtotal > 0 ? "6.00" : "0.00"}`}</p>
+            <p className="highlight">{`-$${subtotal > 0 ? "6.00" : "0.00"}`}</p>
           </div>
         </div>
         <div className={`${styles.cartCheckout}`}>

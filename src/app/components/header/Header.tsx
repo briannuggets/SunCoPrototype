@@ -10,6 +10,7 @@ interface CustomStorageEvent extends Event {
 }
 
 const Header = () => {
+  // Retrieve number of items in cart from localStorage
   const [quantity, setQuantity] = useState(0);
   const retrieveQuantity = (cart: string) => {
     if (cart) {
@@ -23,6 +24,11 @@ const Header = () => {
     }
     return 0;
   };
+
+  useEffect(() => {
+    const cart = localStorage.getItem("cart") || "{}";
+    setQuantity(retrieveQuantity(cart));
+  }, [setQuantity]);
 
   // Update cart quantity each time localStorage is updated
   // https://stackoverflow.com/questions/26974084/listen-for-changes-with-localstorage-on-the-same-window
@@ -46,11 +52,6 @@ const Header = () => {
 
     document.addEventListener("itemInserted", localStorageSetHandler, false);
   }, []);
-
-  useEffect(() => {
-    const cart = localStorage.getItem("cart") || "{}";
-    setQuantity(retrieveQuantity(cart));
-  }, [setQuantity]);
 
   return (
     <nav className="flex-center-split">

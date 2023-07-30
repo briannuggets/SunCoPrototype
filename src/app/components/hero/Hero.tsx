@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 
 const Hero = () => {
+  // Set the device path based on the window width
   const [device, setDevice] = useState("/mobile");
   useEffect(() => {
     const checkDevice = () => {
@@ -27,8 +28,8 @@ const Hero = () => {
         <Image
           src={`${device}/hero.png`}
           alt="Hero shoe image"
-          width={window.innerWidth >= 768 ? 500 : 250}
-          height={window.innerWidth >= 768 ? 500 : 250}
+          width={window.innerWidth >= 768 ? 500 : 300}
+          height={window.innerWidth >= 768 ? 500 : 200}
           className="image-format"
         />
       </div>

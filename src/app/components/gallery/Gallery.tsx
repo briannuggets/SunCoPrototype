@@ -10,6 +10,7 @@ interface GalleryProps {
 }
 
 const Gallery = ({ id, name }: GalleryProps) => {
+  // Set the device path based on the window width
   const [device, setDevice] = useState("/mobile");
   useEffect(() => {
     const checkDevice = () => {
@@ -26,6 +27,7 @@ const Gallery = ({ id, name }: GalleryProps) => {
     });
   }, []);
 
+  // Update progress indicator when current image changes
   const [current, setCurrent] = useState(0);
   const progressRef = useRef<HTMLUListElement>(null);
   useEffect(() => {
@@ -60,7 +62,7 @@ const Gallery = ({ id, name }: GalleryProps) => {
             setCurrent(current - 1);
           }}
         >
-          <img src="/icons/misc/chevron-left.svg" />
+          <img src="/icons/misc/chevron-left.svg" alt="Left chevron" />
         </button>
         <ul className={"progress-indicator flex-center"} ref={progressRef}>
           <li className="current" />
@@ -74,7 +76,7 @@ const Gallery = ({ id, name }: GalleryProps) => {
             setCurrent(current + 1);
           }}
         >
-          <img src="/icons/misc/chevron-right.svg" />
+          <img src="/icons/misc/chevron-right.svg" alt="Right chevron" />
         </button>
       </div>
     </div>

@@ -1,4 +1,3 @@
-@import "./mixins";
 @import "./variables";
 
 *,
@@ -12,6 +11,7 @@
 html {
   overflow-x: hidden;
   scroll-behavior: smooth;
+  scroll-padding-top: calc($nav-height + 1rem);
 }
 
 body {
@@ -33,6 +33,7 @@ nav {
   border-bottom: 2px solid $line-light-grey;
   color: $black;
   background-color: $white;
+  z-index: 10;
 }
 
 a,

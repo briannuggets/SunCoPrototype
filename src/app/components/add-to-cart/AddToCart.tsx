@@ -13,6 +13,9 @@ interface AddToCartProps {
 const AddToCart = ({ id, brand, name, price }: AddToCartProps) => {
   const quantityRef = useRef<HTMLInputElement>(null);
 
+  // @desc Increase or decrease the number of items in the cart
+  // @param increment - true if incrementing, false if decrementing
+  // @returns void
   const handleQuantity = (increment: boolean) => {
     if (quantityRef.current) {
       const modifier = increment ? 1 : -1;
@@ -27,6 +30,9 @@ const AddToCart = ({ id, brand, name, price }: AddToCartProps) => {
     }
   };
 
+  // @desc Add the item to the cart with changes reflected in localStorage
+  // @param e - form event
+  // @returns void
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (quantityRef.current === null) return;
@@ -62,7 +68,7 @@ const AddToCart = ({ id, brand, name, price }: AddToCartProps) => {
                 handleQuantity(false);
               }}
             >
-              <img src="/icons/misc/minus.svg" />
+              <img src="/icons/misc/minus.svg" alt="Remove item" />
             </button>
             <input type="number" defaultValue="1" ref={quantityRef} min={1} />
             <button
@@ -72,7 +78,7 @@ const AddToCart = ({ id, brand, name, price }: AddToCartProps) => {
                 handleQuantity(true);
               }}
             >
-              <img src="/icons/misc/plus.svg" />
+              <img src="/icons/misc/plus.svg" alt="Add item" />
             </button>
           </div>
           <button type="submit" className="black-button">

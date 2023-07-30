@@ -76,7 +76,9 @@ const Carousel = ({ products }: CarouselProps) => {
     }
   }, [dragging]);
 
-  // Carousel controller
+  // @desc Shift the carousel left or right
+  // @param left - true if shifting left, false if shifting right
+  // @returns void
   const shift = (left: boolean) => {
     if (carouselContent.current === null) {
       return;
@@ -93,7 +95,7 @@ const Carousel = ({ products }: CarouselProps) => {
         left: `${newX * -100}%`,
         transform: `translateX(${newX * 100}%)`,
       },
-      { duration: 800, fill: "forwards" }
+      { duration: 600, fill: "forwards", easing: "ease-in-out" }
     );
     carouselContent.current.dataset.previous = newX.toString();
   };
@@ -121,7 +123,7 @@ const Carousel = ({ products }: CarouselProps) => {
             shift(true);
           }}
         >
-          <img src="/icons/misc/chevron-left.svg" />
+          <img src="/icons/misc/chevron-left.svg" alt="Chevron left" />
         </button>
         <button
           className="chevron-button"
@@ -129,7 +131,7 @@ const Carousel = ({ products }: CarouselProps) => {
             shift(false);
           }}
         >
-          <img src="/icons/misc/chevron-right.svg" />
+          <img src="/icons/misc/chevron-right.svg" alt="Chevron right" />
         </button>
       </div>
     </div>

@@ -4,6 +4,9 @@
   background-color: $hero-bg;
   border-radius: 1rem;
   padding: 2rem;
+  div:nth-child(1) {
+    width: min(100%, 300px);
+  }
 }
 
 .heroContent {

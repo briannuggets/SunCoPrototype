@@ -11,13 +11,13 @@ const Footer = () => {
         </Link>
         <div className={styles.socialLinks}>
           <Link href="https://www.instagram.com">
-            <img src="/icons/social/instagram.svg" />
+            <img src="/icons/social/instagram.svg" alt="Instagram logo" />
           </Link>
           <Link href="https://www.twitter.com">
-            <img src="/icons/social/twitter.svg" />
+            <img src="/icons/social/twitter.svg" alt="Instagram logo" />
           </Link>
           <Link href="https://www.youtube.com">
-            <img src="/icons/social/youtube.svg" />
+            <img src="/icons/social/youtube.svg" alt="Instagram logo" />
           </Link>
         </div>
       </div>

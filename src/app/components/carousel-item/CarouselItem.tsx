@@ -7,6 +7,7 @@ import Link from "next/link";
 import Image from "next/image";
 
 const CarouselItem = ({ id, brand, name, price }: Product) => {
+  // Set the device path based on the window width
   const [device, setDevice] = useState("/mobile");
   useEffect(() => {
     const checkDevice = () => {

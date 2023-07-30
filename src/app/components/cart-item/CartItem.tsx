@@ -19,6 +19,7 @@ const CartItem = ({
   subtotal,
   setSubTotal,
 }: CartItemProps) => {
+  // Set the device path based on the window width
   const [device, setDevice] = useState("/mobile");
   useEffect(() => {
     const checkDevice = () => {
@@ -35,6 +36,11 @@ const CartItem = ({
     });
   }, []);
 
+  // @desc Increment/decrement quantity
+  //       Update localStorage to reflect changes
+  //       Update subtotal
+  // @param increment: true if incrementing, false if decrementing
+  // @return void
   const quantityRef = useRef<HTMLInputElement>(null);
   const handleQuantity = (increment: boolean) => {
     if (quantityRef.current) {
@@ -54,6 +60,10 @@ const CartItem = ({
     }
   };
 
+  // @desc Validate input when user types in quantity
+  //       Update localStorage to reflect changes
+  //       Update subtotal
+  // @return void
   const checkInput = () => {
     if (quantityRef.current === null) return;
 
@@ -74,16 +84,20 @@ const CartItem = ({
     setSubTotal(subtotal + product.price * difference);
   };
 
+  // @desc Delete item from cart
+  //       Update localStorage to reflect changes
+  //       Update subtotal
+  // @return void
   const deleteItem = (e: React.MouseEvent<HTMLButtonElement>) => {
     const cartObj = JSON.parse(localStorage.getItem("cart") || "{}");
-    const quantity = cartObj[product.id];
+    const _quantity = cartObj[product.id];
     const cartItem = e.currentTarget.closest(".cart-item");
     if (cartItem) {
       cartItem.remove();
     }
     delete cartObj[product.id];
     localStorage.setItem("cart", JSON.stringify(cartObj));
-    setSubTotal(subtotal - product.price * quantity);
+    setSubTotal(subtotal - product.price * _quantity);
   };
 
   return (
@@ -111,7 +125,7 @@ const CartItem = ({
               handleQuantity(false);
             }}
           >
-            <img src="/icons/misc/minus.svg" />
+            <img src="/icons/misc/minus.svg" alt="Remove item" />
           </button>
           <input
             type="number"
@@ -127,7 +141,7 @@ const CartItem = ({
               handleQuantity(true);
             }}
           >
-            <img src="/icons/misc/plus.svg" />
+            <img src="/icons/misc/plus.svg" alt="Add item" />
           </button>
         </div>
         <button onClick={deleteItem}>Remove</button>
