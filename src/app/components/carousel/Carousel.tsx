@@ -14,7 +14,6 @@ const Carousel = ({ products }: CarouselProps) => {
 
   // ------------------------ Drag Handler ------------------------ //
   const [dragging, setDragging] = useState(false);
-  const animationDuration = 800;
 
   // Touch start/end event listeners
   useEffect(() => {
@@ -64,7 +63,7 @@ const Carousel = ({ products }: CarouselProps) => {
             left: `${deltaPercentageX * -100}%`,
             transform: `translateX(${deltaPercentageX * 100}%)`,
           },
-          { duration: animationDuration, fill: "forwards" }
+          { duration: 200, fill: "forwards" }
         );
 
         // Save the current drag offset for the next drag
@@ -88,20 +87,19 @@ const Carousel = ({ products }: CarouselProps) => {
       carouselContent.current.dataset.previous || "0"
     );
     const newX = Math.min(Math.max(previousX + direction, -1), 0);
-    console.log(previousX, newX);
 
     carouselContent.current.animate(
       {
         left: `${newX * -100}%`,
         transform: `translateX(${newX * 100}%)`,
       },
-      { duration: animationDuration, fill: "forwards", easing: "ease-out" }
+      { duration: 800, fill: "forwards" }
     );
     carouselContent.current.dataset.previous = newX.toString();
   };
 
   return (
-    <div className={styles.carouselContainer}>
+    <div className={styles.carouselContainer} id="carousel-container">
       <h2>Explore our latest drops</h2>
       <div className={styles.carousel}>
         <CarouselItem {...products[0]} />

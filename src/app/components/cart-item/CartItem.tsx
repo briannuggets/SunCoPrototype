@@ -21,7 +21,7 @@ const CartItem = ({
   const [device, setDevice] = useState("/mobile");
   useEffect(() => {
     const checkDevice = () => {
-      if (window.innerWidth > 768) {
+      if (window.innerWidth >= 768) {
         setDevice("/desktop");
       } else {
         setDevice("/mobile");

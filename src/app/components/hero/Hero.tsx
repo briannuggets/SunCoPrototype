@@ -7,7 +7,7 @@ const Hero = () => {
   const [device, setDevice] = useState("/mobile");
   useEffect(() => {
     const checkDevice = () => {
-      if (window.innerWidth > 768) {
+      if (window.innerWidth >= 768) {
         setDevice("/desktop");
       } else {
         setDevice("/mobile");
@@ -22,15 +22,21 @@ const Hero = () => {
 
   return (
     <div className={`${styles.hero} flex-center-column`}>
-      <img src={`${device}/hero.png`} />
+      <div>
+        <img
+          src={`${device}/hero.png`}
+          alt="Hero shoe image"
+          className="image-format"
+        />
+      </div>
       <div className={`flex-center-column ${styles.heroContent}`}>
         <h2 className="highlight">25% OFF</h2>
         <h1>Summer Sale</h1>
         <h3>Discover our summer styles with discount</h3>
-        <button className="black-button">
+        <a className="black-button" href="#carousel-container">
           Shop Now&nbsp;
           <img src="/icons/misc/arrow-right.svg" alt="Arrow right" />
-        </button>
+        </a>
       </div>
     </div>
   );

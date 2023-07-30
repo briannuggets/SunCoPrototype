@@ -5,11 +5,11 @@ import styles from "./styles.module.scss";
 const getProduct = async (id: string) => {
   "use server";
 
-  const product = await fetch(`http://localhost:3000/api/products/${id}`).then(
-    (res) => {
-      return res.json();
-    }
-  );
+  const product = await fetch(
+    `${process.env.NEXT_PUBLIC_API_URL}/api/products/${id}`
+  ).then((res) => {
+    return res.json();
+  });
   return product;
 };
 
@@ -26,8 +26,8 @@ const ProductPage = async ({ params }: { params: { id: string } }) => {
           <h2>Description</h2>
           <p>{product.description}</p>
           <ul>
-            {product.features.map((feature: string) => (
-              <li>{feature}</li>
+            {product.features.map((feature: string, index: number) => (
+              <li key={index}>{feature}</li>
             ))}
           </ul>
         </div>

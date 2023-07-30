@@ -59,17 +59,21 @@ const CartClient = ({ products }: CartClientProps) => {
       </div>
       <div className={`${styles.cartItems}`}>
         <h2>Your Bag</h2>
-        {Object.keys(cart).map((item, index) => {
-          return (
-            <CartItem
-              key={index}
-              product={products[parseInt(item)]}
-              quantity={parseInt(cart[item])}
-              subtotal={subtotal}
-              setSubTotal={setSubTotal}
-            />
-          );
-        })}
+        {Object.keys(cart).length === 0 ? (
+          <p style={{ marginTop: "1.5rem" }}>No items in your bag.</p>
+        ) : (
+          Object.keys(cart).map((item, index) => {
+            return (
+              <CartItem
+                key={index}
+                product={products[parseInt(item)]}
+                quantity={parseInt(cart[item])}
+                subtotal={subtotal}
+                setSubTotal={setSubTotal}
+              />
+            );
+          })
+        )}
       </div>
     </>
   );

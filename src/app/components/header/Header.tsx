@@ -60,7 +60,9 @@ const Header = () => {
       </Link>
       <Link className={`${styles.viewCart} flex-center`} href="/pages/cart">
         <img src="/icons/misc/shopping-bag.svg" alt="Shopping bag icon" />
-        <span>View Cart</span>
+        <div>
+          <span>View Cart</span>
+        </div>
         <span
           className={`${styles.cartQuantity} ${quantity < 1 ? "hidden" : ""}`}
         >

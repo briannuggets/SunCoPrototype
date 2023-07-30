@@ -9,7 +9,7 @@ const CarouselItem = ({ id, brand, name, price }: Product) => {
   const [device, setDevice] = useState("/mobile");
   useEffect(() => {
     const checkDevice = () => {
-      if (window.innerWidth > 768) {
+      if (window.innerWidth >= 768) {
         setDevice("/desktop");
       } else {
         setDevice("/mobile");
@@ -27,7 +27,13 @@ const CarouselItem = ({ id, brand, name, price }: Product) => {
       className={`${styles.carouselItem} flex-center-column`}
       href={`/pages/product/${id}`}
     >
-      <img src={`${device}/products/square/${id}.png`} draggable={false} />
+      <div>
+        <img
+          src={`${device}/products/square/${id}.png`}
+          draggable={false}
+          className="image-format"
+        />
+      </div>
       <h3>{brand}</h3>
       <p>{name}</p>
       <p>${price}</p>

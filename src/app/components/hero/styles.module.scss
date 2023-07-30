@@ -27,26 +27,30 @@
 }
 
 @media screen and (min-width: 768px) {
-  .hero > img {
+  .hero div:nth-child(1) {
     width: 50%;
   }
 }
 
 @media screen and (min-width: 1024px) {
   .hero {
+    max-height: 400px;
     display: flex;
     flex-direction: row-reverse;
     align-items: center;
     gap: 4rem;
     padding: 4rem;
-    & > img {
-      height: 10%;
-      object-fit: cover;
-      object-position: center;
+    div:nth-child(1) {
+      padding: 2rem;
+      overflow: hidden;
     }
   }
   .heroContent {
     width: 50%;
+    a {
+      margin-top: 2rem;
+      max-width: 300px;
+    }
   }
   .heroContent {
     text-align: left;
