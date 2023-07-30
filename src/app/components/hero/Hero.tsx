@@ -2,6 +2,7 @@
 
 import styles from "./styles.module.scss";
 import { useEffect, useState } from "react";
+import Image from "next/image";
 
 const Hero = () => {
   const [device, setDevice] = useState("/mobile");
@@ -23,9 +24,11 @@ const Hero = () => {
   return (
     <div className={`${styles.hero} flex-center-column`}>
       <div>
-        <img
+        <Image
           src={`${device}/hero.png`}
           alt="Hero shoe image"
+          width={window.innerWidth >= 768 ? 500 : 250}
+          height={window.innerWidth >= 768 ? 500 : 250}
           className="image-format"
         />
       </div>

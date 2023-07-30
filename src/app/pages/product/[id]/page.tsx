@@ -1,6 +1,7 @@
 import Gallery from "@/app/components/gallery/Gallery";
 import AddToCart from "@/app/components/add-to-cart/AddToCart";
 import styles from "./styles.module.scss";
+import Image from "next/image";
 
 const getProduct = async (id: string) => {
   "use server";
@@ -32,10 +33,12 @@ const ProductPage = async ({ params }: { params: { id: string } }) => {
           </ul>
         </div>
         <div>
-          <img
+          <Image
             src={`/desktop/products/rect/product-${product.id}/3.png`}
             alt={`${product.name} secondary style`}
             className="image-format"
+            width={500}
+            height={400}
           />
         </div>
       </div>

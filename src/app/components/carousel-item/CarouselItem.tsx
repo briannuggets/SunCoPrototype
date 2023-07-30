@@ -4,6 +4,7 @@ import styles from "./styles.module.scss";
 import Product from "@/app/types/product";
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 const CarouselItem = ({ id, brand, name, price }: Product) => {
   const [device, setDevice] = useState("/mobile");
@@ -28,10 +29,13 @@ const CarouselItem = ({ id, brand, name, price }: Product) => {
       href={`/pages/product/${id}`}
     >
       <div>
-        <img
+        <Image
           src={`${device}/products/square/${id}.png`}
           draggable={false}
           className="image-format"
+          width={window.innerWidth >= 768 ? 500 : 250}
+          height={window.innerWidth >= 768 ? 500 : 250}
+          alt={`${name} shoes`}
         />
       </div>
       <h3>{brand}</h3>

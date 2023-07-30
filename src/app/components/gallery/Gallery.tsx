@@ -2,6 +2,7 @@
 
 import styles from "./styles.module.scss";
 import { useState, useEffect, useRef } from "react";
+import Image from "next/image";
 
 interface GalleryProps {
   id: number;
@@ -42,10 +43,14 @@ const Gallery = ({ id, name }: GalleryProps) => {
 
   return (
     <div className={styles.gallery}>
-      <img
+      <Image
         src={`${device}/products/rect/product-${id}/${current}.png`}
         alt={`${name} shoes`}
         className="image-format"
+        width={
+          window.innerWidth >= 768 ? window.innerWidth / 2 : window.innerWidth
+        }
+        height={400}
       />
       <div className={`${styles.galleryControls} flex-center-split`}>
         <button

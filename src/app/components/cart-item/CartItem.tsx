@@ -4,6 +4,7 @@ import styles from "./styles.module.scss";
 import Product from "@/app/types/product";
 import { useEffect, useState, useRef } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 interface CartItemProps {
   product: Product;
@@ -88,10 +89,12 @@ const CartItem = ({
   return (
     <div className={`${styles.cartItem} cart-item`}>
       <Link href={`product/${product.id}`}>
-        <img
+        <Image
           className="image-format"
           src={`${device}/products/square/${product.id}.png`}
           alt={`${product.name} shoes`}
+          width={150}
+          height={150}
         />
       </Link>
       <div className={styles.cartItemDetails}>
