@@ -1,34 +1,56 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# SUN CO. Technical Assessment
+This is a basic e-commerce store application built using Next.js. The project aims to meet the provided business and technical requirements outlined in the specifications. It implements a simple API linked to a front-end matching the provided Figma mockup.
 
-## Getting Started
+## Live Site
+The functional site can be found here: https://assessment-seven-kappa.vercel.app/
 
-First, run the development server:
+## Video Demo
+A video demonstration of the site can be found here: https://www.youtube.com/watch?v=Ii1_rE8kzgI
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+
+## Local Installation
+1. Clone the repository
+```
+git clone https://github.com/briannuggets/SunCoPrototype.git
+```
+2. Navigate to the root project directory and install dependencies
+```
+npm install
+```
+3. Create an .env file and add the local development url
+```
+NEXT_PUBLIC_API_URL=http://localhost:3000
+```
+4. Access the application in your browser at http://localhost:3000
+
+## Testing
+Tests are implemented using Jest.
+1. Navigate to root directory
+2. Uncomment the first line in /app/api/utils.ts
+```
+const fetch = require("node-fetch");
+```
+3. Run the test script
+```
+npm run test
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Technologies
+* NextJS
+* SCSS
+* Jest (testing framework)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Additional Considerations
+Although all the business requirements have been met, these are some extra quality-of-life updates I would make to improve UX, given more time.
+* Loading screen between pages.
+* Loading animations between gallery images (lazy loading increases wait time on first page visit).
+* Keyboard functionality on carousel for smaller screen sizes (i.e. arrow keys).
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Concurrent Environment
+A concurrent environment implies that multiple shoppers will be accessing our application at any given time, which is common in the case of e-commerce sites. If this application were intended to run in a concurrent environment, I would consider the following:
+1. Database management - Hard-coded product data cannot be updated very easily. In the case of products, items need to be added, removed, or updated from the catalogue depending on inventory. Using a database like SQLite would be a great improvement over hardcoding, as it allows for more flexibility and easier maintenance of product data.
+2. Caching - Repeated API calls from many shoppers can provide stressful load on the server. We can instead just call the API once and save the data for later uses. Subsequent requests for the same data can be served from the cache resulting in faster response times for users.
+3. Error handling - Potential issues such as network or server errors can come up in a concurrent environment, so it is imperative to handle these well. Proper logging and monitoring of errors can also help in identifying and resolving issues quickly.
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Contact
+Thank you for reviewing my technical assessment! If you have any questions or feedback, please feel free to reach out at brianwindev@gmail.com.
