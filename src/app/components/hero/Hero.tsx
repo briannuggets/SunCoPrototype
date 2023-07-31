@@ -28,9 +28,10 @@ const Hero = () => {
         <Image
           src={`${device}/hero.png`}
           alt="Hero shoe image"
-          width={window.innerWidth >= 768 ? 500 : 300}
-          height={window.innerWidth >= 768 ? 500 : 200}
+          width={device === "/desktop" ? 500 : 300}
+          height={device === "/desktop" ? 500 : 200}
           className="image-format"
+          priority
         />
       </div>
       <div className={`flex-center-column ${styles.heroContent}`}>

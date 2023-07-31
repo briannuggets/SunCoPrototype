@@ -49,9 +49,7 @@ const Gallery = ({ id, name }: GalleryProps) => {
         src={`${device}/products/rect/product-${id}/${current}.png`}
         alt={`${name} shoes`}
         className="image-format"
-        width={
-          window.innerWidth >= 768 ? window.innerWidth / 2 : window.innerWidth
-        }
+        width={700}
         height={400}
       />
       <div className={`${styles.galleryControls} flex-center-split`}>

@@ -2,17 +2,7 @@ import Gallery from "@/app/components/gallery/Gallery";
 import AddToCart from "@/app/components/add-to-cart/AddToCart";
 import styles from "./styles.module.scss";
 import Image from "next/image";
-
-const getProduct = async (id: string) => {
-  "use server";
-
-  const product = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/api/products/${id}`
-  ).then((res) => {
-    return res.json();
-  });
-  return product;
-};
+import { getProduct } from "@/app/api/utils";
 
 const ProductPage = async ({ params }: { params: { id: string } }) => {
   const product = await getProduct(params.id);

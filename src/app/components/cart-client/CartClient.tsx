@@ -55,7 +55,7 @@ const CartClient = ({ products }: CartClientProps) => {
           </div>
           <a
             className="black-button"
-            href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+            href="https://www.youtube.com/watch?v=vr5dCRHAgb0"
           >
             Checkout&nbsp;
             <img src="/icons/misc/arrow-right.svg" alt="Right arrow" />

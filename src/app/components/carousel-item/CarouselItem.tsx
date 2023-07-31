@@ -34,8 +34,8 @@ const CarouselItem = ({ id, brand, name, price }: Product) => {
           src={`${device}/products/square/${id}.png`}
           draggable={false}
           className="image-format"
-          width={window.innerWidth >= 768 ? 500 : 250}
-          height={window.innerWidth >= 768 ? 500 : 250}
+          width={device === "/desktop" ? 500 : 250}
+          height={device === "/desktop" ? 500 : 250}
           alt={`${name} shoes`}
         />
       </div>
