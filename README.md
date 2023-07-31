@@ -1,8 +1,10 @@
 # SUN CO. Technical Assessment
 This is a basic e-commerce store application built using Next.js. The project aims to meet the provided business and technical requirements outlined in the specifications. It implements a simple API linked to a front-end matching the provided Figma mockup.
 
+
 ## Live Site
 The functional site can be found here: https://assessment-seven-kappa.vercel.app/
+
 
 ## Video Demo
 A video demonstration of the site can be found here: https://www.youtube.com/watch?v=Ii1_rE8kzgI
@@ -23,6 +25,7 @@ NEXT_PUBLIC_API_URL=http://localhost:3000
 ```
 4. Access the application in your browser at http://localhost:3000
 
+
 ## Testing
 Tests are implemented using Jest.
 1. Navigate to root directory
@@ -35,16 +38,19 @@ const fetch = require("node-fetch");
 npm run test
 ```
 
+
 ## Technologies
 * NextJS
 * SCSS
 * Jest (testing framework)
+
 
 ## Additional Considerations
 Although all the business requirements have been met, these are some extra quality-of-life updates I would make to improve UX, given more time.
 * Loading screen between pages.
 * Loading animations between gallery images (lazy loading increases wait time on first page visit).
 * Keyboard functionality on carousel for smaller screen sizes (i.e. arrow keys).
+
 
 ## Concurrent Environment
 A concurrent environment implies that multiple shoppers will be accessing our application at any given time, which is common in the case of e-commerce sites. If this application were intended to run in a concurrent environment, I would consider the following:
