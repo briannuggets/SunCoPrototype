@@ -1,4 +1,5 @@
-const fetch = require("node-fetch");
+// Uncomment the following line to run test cases:
+// const fetch = require("node-fetch");
 
 // @desc Fetch an array of all products from the API
 // @route GET /api/products

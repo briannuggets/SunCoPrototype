@@ -57,6 +57,7 @@
 @media screen and (min-width: 1024px) {
   .cartSummary {
     flex: 1;
+    height: fit-content;
   }
   .cartItems {
     margin-top: 0rem;
